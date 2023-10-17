@@ -1,13 +1,25 @@
-/*In this kata you will create a function that takes a list of non-negative integers 
-and strings and returns a new list with the strings filtered out.
-*/
 
-function filter_list(l) {
-    let new_array = [];
-    for(e of l){
-        if(e )
-        return new_array.push(e)
-    }
-  }
+// Define the API endpoint URL
+const apiUrl = 'https://dummyjson.com/quotes';
 
-  
+// Function to fetch data from the API
+function fetchData() {
+  fetch(apiUrl)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then((data) => {
+      // Handle the fetched data here
+      console.log('Fetched data:', data);
+    })
+    .catch((error) => {
+      // Handle errors
+      console.error('Error:', error);
+    });
+}
+
+// Call the fetchData function to initiate the API request
+fetchData();
