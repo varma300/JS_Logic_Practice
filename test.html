@@ -1,72 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Checkbox Data Saving</title>
-    <style>
-        /* Define some basic CSS styles for checkboxes */
-        label {
-            display: block;
-            margin-bottom: 10px;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 <body>
-    <h1>Checkbox Data Saving</h1>
-
-    <!-- Create checkboxes with labels -->
-    <label>
-        <input type="checkbox" id="checkbox1"> Checkbox 1
-    </label>
-    <label>
-        <input type="checkbox" id="checkbox2"> Checkbox 2
-    </label>
-    <label>
-        <input type="checkbox" id="checkbox3"> Checkbox 3
-    </label>
-
-    <!-- Create a button to save checkbox selections -->
-    <button id="saveButton">Save Selections</button>
-
-    <!-- Display the saved selections -->
-    <div id="savedSelections"></div>
-
-    <script>
-        // Get references to the checkboxes and the button
-        const checkbox1 = document.getElementById('checkbox1');
-        const checkbox2 = document.getElementById('checkbox2');
-        const checkbox3 = document.getElementById('checkbox3');
-        const saveButton = document.getElementById('saveButton');
-        const savedSelections = document.getElementById('savedSelections');
-
-        // Initialize an object to store checkbox data
-        const checkboxData = {
-            checkbox1: false,
-            checkbox2: false,
-            checkbox3: false
-        };
-
-        // Add event listeners to the checkboxes to update the checkboxData object
-        checkbox1.addEventListener('change', () => {
-            checkboxData.checkbox1 = checkbox1.checked;
-        });
-
-        checkbox2.addEventListener('change', () => {
-            checkboxData.checkbox2 = checkbox2.checked;
-        });
-
-        checkbox3.addEventListener('change', () => {
-            checkboxData.checkbox3 = checkbox3.checked;
-        });
-
-        // Add an event listener to the Save button
-        saveButton.addEventListener('click', () => {
-            // Display saved selections in the "savedSelections" div
-            savedSelections.innerHTML = `
-                Checkbox 1: ${checkboxData.checkbox1 ? 'Checked' : 'Unchecked'}<br>
-                Checkbox 2: ${checkboxData.checkbox2 ? 'Checked' : 'Unchecked'}<br>
-                Checkbox 3: ${checkboxData.checkbox3 ? 'Checked' : 'Unchecked'}<br>
-            `;
-        });
-    </script>
+    <script src="test.js"></script>
 </body>
 </html>
