@@ -1,11 +1,23 @@
-// find the total price for product
+// Global Scope 
+const pie = 3.14;
 
-const product = [
-    {name:'a', qty:2, price:50},
-    {name:'d', qty:1, price:100},
-    {name:'c', qty:5, price:10},
-]
 
-const price = product.map(e=>e.qty * e.price).reduce((a,c)=>a+c)
+function fn1(){
+    console.log(pie);//3.14
 
-console.log('total price = ' + price);
+    // function scope
+    const age = 32;
+    console.log(age); //32
+}
+
+// block scope
+
+if (true){
+const fullName = 'Rahul Varma TK';
+console.log(fullName); //Rahul Varma TK
+
+}
+
+console.log(pie);  //3.14
+console.log(age); // RefferenceError : age is not defined
+console.log(fullName); // RefferenceError : fullName is not defined
