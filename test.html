@@ -6,6 +6,94 @@
     <title>Document</title>
 </head>
 <body>
-    <script src="test.js"></script>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Form Example</title>
+      <style>
+        body {
+          font-family: Arial, sans-serif;
+          background-color: #f4f4f4;
+          margin: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+        }
+    
+        form {
+          background-color: geon#7f7272;
+          padding: 20px;
+          border-radius: 8px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          width: 300px;
+        }
+    
+        label {
+          display: block;
+          margin-bottom: 8px;
+          font-weight: bold;
+        }
+    
+        input {
+          width: 100%;
+          padding: 8px;
+          margin-bottom: 16px;
+          box-sizing: border-box;
+        }
+    
+        input[type="submit"] {
+          background-color: #4caf50;
+          color: #fff;
+          cursor: pointer;
+        }
+    
+        input[type="submit"]:hover {
+          background-color: #45a049;
+        }
+    
+        #output {
+          margin-top: 20px;
+          font-weight: bold;
+        }
+      </style>
+    </head>
+    <body>
+    
+      <form id="myForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+    
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required>
+    
+        <label for="email">Email ID:</label>
+        <input type="email" id="email" name="email" required>
+    
+        <input type="submit" value="Submit">
+      </form>
+    
+      <div id="output"></div>
+    
+      <script>
+        document.getElementById('myForm').addEventListener('submit', function(event) {
+          event.preventDefault();
+    
+          var name = document.getElementById('name').value;
+          var phone = document.getElementById('phone').value;
+          var email = document.getElementById('email').value;
+    
+          var output = "Name: " + name + "<br>Phone Number: " + phone + "<br>Email ID: " + email;
+    
+          document.getElementById('output').innerHTML = output;
+        });
+      </script>
+    
+    </body>
+    </html>
+    
+    
 </body>
 </html>
