@@ -1,4 +1,4 @@
-// Global Scope 
+// Global Scope
 const pie = 3.14;
 
 
