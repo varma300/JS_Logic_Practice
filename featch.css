@@ -8,6 +8,10 @@
     font-size: 3rem;
     margin-bottom: 'Gill Sans', 'Gill Sans MT',Calibri, 'Trebuchet MS',sans-serif;
 }
-.cards{
-    
+
+#card{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
+
