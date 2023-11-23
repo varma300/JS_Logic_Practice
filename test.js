@@ -1,77 +1,58 @@
 
+
 /*
-A string in JavaScript is a data type that represents text.
- It is a sequence of characters enclosed in single or double quotes.
+A JavaScript array is a collection of values, each with an index. 
+Arrays are used to store multiple values of the same type.
+Array elements are accessed using their indices, which are non-negative integers.
+The first element has an index of 0, the second element has an index of 1, 
+and so on. JavaScript arrays are dynamic, 
+ which means that they can grow and shrink as needed.
+  */
 
-*/
-
-let str = `A string in JavaScript is a data type that represents text.
-It is a sequence of characters enclosed in single or double quotes.`;
-
-// length
-let len = str.length
-console.log(len);
-
-//slice
-
-let sls = str.slice(12,22);
-console.log(sls);
-
-//replace / replaceAll
-
-let rps = str.replace('is','was')
-let rpsal = str.replaceAll('is', 'HAVE')
-console.log(rpsal);
-
-//toUpperCase / toLowercase
-
-let up = str.toUpperCase()
-console.log(up);
-
-let loc = up.toLowerCase()
-console.log(loc);
-
-//concat
-
-let x = 'hello';
-let y = 'hi';
-let out = y.concat(x)
-console.log(out);
-
-let out2 = x+ ' ' +y;
-console.log(out2);
-
-// trim
-
-let wsp = '  hi  hello  ';
-console.log(wsp);
-let trm = wsp.trim();
-console.log(trm);
-
-let tst = wsp.trimStart();
-console.log(tst);
-
-let ted = wsp.trimEnd();
-console.log(ted);
-
-//padStart / padEnd
-
-let a = '00';
-
-let o = a.padStart(5,'*')
-console.log(o);
-
-let oe = a.padEnd(3,'#')
-console.log(oe);
-
-//caheAt
-
-let name = 'my nAme is khan';
-let cA = name.charAt(5);
-console.log(cA);
-
-
-//charCodeAt 
-
-let CCA = name.charCodeAt(4);
-console.log(CCA);
+ let arr = [1,2,true,false,'string'];
+ console.log(arr);
+ 
+ // length
+ 
+ let len = arr.length;
+ console.log(len);
+ 
+ // toString
+ let str = arr.toString();
+ console.log( str);
+ 
+ // pop / push
+ 
+ let POP = arr.pop();
+ console.log(arr);
+ console.log(POP);
+ 
+ arr.push('name')
+ console.log(arr);
+ 
+ 
+ // shift / unshift
+ 
+ arr.shift();
+ console.log(arr);
+ 
+ arr.unshift(45);
+ console.log(arr);
+ 
+ // join
+ 
+ str = arr.join(' and ')
+ console.log( str);
+ 
+ // splice
+ 
+ arr.splice(1,0, 99, 'text');
+ console.log(arr);
+ 
+ // slice
+ 
+ let arr1 = arr.slice(2,5);
+ console.log(arr1);
+ 
+ 
+ 
