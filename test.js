@@ -1,12 +1,26 @@
-let a = [{a:1, b:2},
-{a:2,b:3},
-{a:3,b:4}
-];
-let x = [];
-let y
+`Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
 
-for(i =0; i<a.length ; i++){
-      x.unshift(a[i].b)
-      y = x.sort(function(a,b){return b-a})
+You may assume that each input would have exactly one solution, and you may not use the same element twice.`
+
+
+
+let nums = [3,3]
+let target = 6
+
+var twoSum = function(nums, target) {
+  let out ;
+  for(i=0;i<nums.length;i++){
+    for(j=i+1;j<nums.length;j++){
+      if(nums[i]+nums[j] == target){
+      
+        out = [i,j]
+      }
+      
     }
-    console.log(y[2]);
+    
+  }
+  return out
+    }
+
+
+console.log(twoSum(nums, target));
