@@ -1,57 +1,36 @@
-`You are given the array paths, where paths[i] = [cityAi, cityBi] means there exists a direct path going from cityAi to cityBi. Return the destination city, that is, the city without any path outgoing to another city.
+`Both rest parameters and spread operators are powerful tools in JavaScript that deal with iterables like arrays and objects, but they achieve different things:
 
-It is guaranteed that the graph of paths forms a line without any loop, therefore, there will be exactly one destination city.
+Rest Parameter:
+Definition: A function parameter prefixed with three dots (...) that captures all remaining arguments passed to the function.
+Functionality: Gathers multiple arguments into a single array.
+Use case: Makes functions flexible by accepting any number of arguments.
 
- 
+Spread Operator:
+Definition: Three dots (...) used to "unpack" an iterable like an array or object.
+Functionality: Expands an iterable into its individual elements.
+Use case: Simplifies syntax for passing elements of an iterable to functions or constructing new arrays/objects.
+`
+// Rest Parameter:
 
-Example 1:
 
-Input: paths = [["London","New York"],["New York","Lima"],["Lima","Sao Paulo"]]
-Output: "Sao Paulo" 
-Explanation: Starting at "London" city you will reach "Sao Paulo" city which is the destination city. Your trip consist of: "London" -> "New York" -> "Lima" -> "Sao Paulo".
-Example 2:
+function fn(...val){
+    let out = val.reduce((t,c)=>t+c);
+    console.log(out);
+}
+fn(1,2,3,4,5,6,7,8,9,10)
 
-Input: paths = [["B","C"],["D","B"],["C","A"]]
-Output: "A"
-Explanation: All possible trips are: 
-"D" -> "B" -> "C" -> "A". 
-"B" -> "C" -> "A". 
-"C" -> "A". 
-"A". 
-Clearly the destination city is "A".
-Example 3:
 
-Input: paths = [["A","Z"]]
-Output: "Z"
- 
 
-Constraints:
+// Spread Operator:
 
-1 <= paths.length <= 100
-paths[i].length == 2
-1 <= cityAi.length, cityBi.length <= 10
-cityAi != cityBi
-All strings consist of lowercase and uppercase English letters and the space character.`
+let a = [1,2,3,4];
+let b = [5,6,7,8];
+let c = [100,...b]
+console.log(c);
 
-let paths = [["London","New York"],["New York","Lima"],["Lima","Sao Paulo"]]
 
-var destCity = function(paths) {
-    let len = paths.length;
-    let out ;
-    if(len > 1){
-        for(i=0;i<len ;i++){
-            for(j=i+1;j<len;j++){
-                if(paths[i][0]!==paths[j][0] && paths[i][1]!==paths[j][0] && paths[i][0]!==paths[j][0]){
-                    out = paths[j][1]
-                }
-            }
-        }
-        return(out);
+let obj = {name:'rahul', age:25};
+let obj2 = {place :'chennai', Qlf:'BCOM'};
 
-    }else{
-        return(paths[0][1]);
-    }
-    
-};
-
-destCity(paths) 
+let obj3 = {name:'Sree', ...obj2};
+console.log(obj3);
