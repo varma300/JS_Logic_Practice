@@ -1,25 +1,57 @@
-`Example 1:
+`You are given the array paths, where paths[i] = [cityAi, cityBi] means there exists a direct path going from cityAi to cityBi. Return the destination city, that is, the city without any path outgoing to another city.
 
-Input: x = 121
-Output: true
-Explanation: 121 reads as 121 from left to right and from right to left.
+It is guaranteed that the graph of paths forms a line without any loop, therefore, there will be exactly one destination city.
+
+ 
+
+Example 1:
+
+Input: paths = [["London","New York"],["New York","Lima"],["Lima","Sao Paulo"]]
+Output: "Sao Paulo" 
+Explanation: Starting at "London" city you will reach "Sao Paulo" city which is the destination city. Your trip consist of: "London" -> "New York" -> "Lima" -> "Sao Paulo".
 Example 2:
 
-Input: x = -121
-Output: false
-Explanation: From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.
+Input: paths = [["B","C"],["D","B"],["C","A"]]
+Output: "A"
+Explanation: All possible trips are: 
+"D" -> "B" -> "C" -> "A". 
+"B" -> "C" -> "A". 
+"C" -> "A". 
+"A". 
+Clearly the destination city is "A".
 Example 3:
 
-Input: x = 10
-Output: false
-Explanation: Reads 01 from right to left. Therefore it is not a palindrome.`
+Input: paths = [["A","Z"]]
+Output: "Z"
+ 
 
-var isPalindrome = function(x) {
-let str = x.toString()
-let str1 = str.split('').reverse().join('')
-return( str1===str);
+Constraints:
 
+1 <= paths.length <= 100
+paths[i].length == 2
+1 <= cityAi.length, cityBi.length <= 10
+cityAi != cityBi
+All strings consist of lowercase and uppercase English letters and the space character.`
+
+let paths = [["London","New York"],["New York","Lima"],["Lima","Sao Paulo"]]
+
+var destCity = function(paths) {
+    let len = paths.length;
+    let out ;
+    if(len > 1){
+        for(i=0;i<len ;i++){
+            for(j=i+1;j<len;j++){
+                if(paths[i][0]!==paths[j][0] && paths[i][1]!==paths[j][0] && paths[i][0]!==paths[j][0]){
+                    out = paths[j][1]
+                }
+            }
+        }
+        return(out);
+
+    }else{
+        return(paths[0][1]);
+    }
+    
 };
 
-
-console.log(isPalindrome(121))
+destCity(paths) 
