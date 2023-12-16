@@ -1,36 +1,42 @@
-`Both rest parameters and spread operators are powerful tools in JavaScript that deal with iterables like arrays and objects, but they achieve different things:
+`Given two strings s and t, return true if t is an anagram of s, and false otherwise.
 
-Rest Parameter:
-Definition: A function parameter prefixed with three dots (...) that captures all remaining arguments passed to the function.
-Functionality: Gathers multiple arguments into a single array.
-Use case: Makes functions flexible by accepting any number of arguments.
+An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
 
-Spread Operator:
-Definition: Three dots (...) used to "unpack" an iterable like an array or object.
-Functionality: Expands an iterable into its individual elements.
-Use case: Simplifies syntax for passing elements of an iterable to functions or constructing new arrays/objects.
-`
-// Rest Parameter:
+ 
 
+Example 1:
 
-function fn(...val){
-    let out = val.reduce((t,c)=>t+c);
-    console.log(out);
-}
-fn(1,2,3,4,5,6,7,8,9,10)
+Input: s = "anagram", t = "nagaram"
+Output: true
+Example 2:
 
+Input: s = "rat", t = "car"
+Output: false`
 
+let s = "rat", t = "cat"
 
-// Spread Operator:
-
-let a = [1,2,3,4];
-let b = [5,6,7,8];
-let c = [100,...b]
-console.log(c);
+var isAnagram = function (s, t) {
+    s = s.split('');
+    t = t.split('');
+    let out;
 
 
-let obj = {name:'rahul', age:25};
-let obj2 = {place :'chennai', Qlf:'BCOM'};
+    if (s.length === t.length) {
+        for (i = 0; i < s.length; i++) {
+            for (j = 0; j < s.length; j++) {
 
-let obj3 = {name:'Sree', ...obj2};
-console.log(obj3);
+                if (s[i] === t[j]) {
+                    delete t[j]
+                    break;
+                }
+
+            }
+            out = (t[i]===undefined)? true : false;
+
+        }
+        return (out);
+    } else {
+       return (false);
+    }
+};
+console.log(isAnagram(s, t));
