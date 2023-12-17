@@ -1,42 +1,45 @@
-`Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+`You are given an array of strings words and a string chars.
 
-An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
-
- 
+A string is good if it can be formed by characters from chars (each character can only be used once).
+Return the sum of lengths of all good strings in words.
 
 Example 1:
 
-Input: s = "anagram", t = "nagaram"
-Output: true
+Input: words = ["cat","bt","hat","tree"], chars = "atach"
+Output: 6
+Explanation: The strings that can be formed are "cat" and "hat" so the answer is 3 + 3 = 6.
 Example 2:
 
-Input: s = "rat", t = "car"
-Output: false`
+Input: words = ["hello","world","leetcode"], chars = "welldonehoneyr"
+Output: 10
+Explanation: The strings that can be formed are "hello" and "world" so the answer is 5 + 5 = 10.
+ 
 
-let s = "rat", t = "cat"
+Constraints:
 
-var isAnagram = function (s, t) {
-    s = s.split('');
-    t = t.split('');
-    let out;
+1 <= words.length <= 1000
+1 <= words[i].length, chars.length <= 100
+words[i] and chars consist of lowercase English letters.`
 
+let words = ["cat", "bt", "hat", "tree"], chars = "atach";
 
-    if (s.length === t.length) {
-        for (i = 0; i < s.length; i++) {
-            for (j = 0; j < s.length; j++) {
-
-                if (s[i] === t[j]) {
-                    delete t[j]
-                    break;
+var countCharacters = function (words, chars) {
+    for (i = 0; i < words.length; i++) {
+        let arr = chars.split('');
+        for (j=0; j < words[i].length; j++) {
+            let test = chars.includes(words[i][j]);
+            // console.log(chars[j]);
+                if(!test){
+                    delete words[i];
+                    break
                 }
-
             }
-            out = (t[i]===undefined)? true : false;
-
+            
         }
-        return (out);
-    } else {
-       return (false);
-    }
+        
+        let out = words.reduce((t,c)=>t+c.length,0)
+        return out
 };
-console.log(isAnagram(s, t));
+
+
+countCharacters(words, chars) 
