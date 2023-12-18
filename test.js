@@ -1,45 +1,33 @@
-`You are given an array of strings words and a string chars.
+`The product difference between two pairs (a, b) and (c, d) is defined as (a * b) - (c * d).
 
-A string is good if it can be formed by characters from chars (each character can only be used once).
-Return the sum of lengths of all good strings in words.
+For example, the product difference between (5, 6) and (2, 7) is (5 * 6) - (2 * 7) = 16.
+Given an integer array nums, choose four distinct indices w, x, y, and z such that the product difference between pairs (nums[w], nums[x]) and (nums[y], nums[z]) is maximized.
+
+Return the maximum such product difference.
+
+ 
 
 Example 1:
 
-Input: words = ["cat","bt","hat","tree"], chars = "atach"
-Output: 6
-Explanation: The strings that can be formed are "cat" and "hat" so the answer is 3 + 3 = 6.
+Input: nums = [5,6,2,7,4]
+Output: 34
+Explanation: We can choose indices 1 and 3 for the first pair (6, 7) and indices 2 and 4 for the second pair (2, 4).
+The product difference is (6 * 7) - (2 * 4) = 34.
 Example 2:
 
-Input: words = ["hello","world","leetcode"], chars = "welldonehoneyr"
-Output: 10
-Explanation: The strings that can be formed are "hello" and "world" so the answer is 5 + 5 = 10.
- 
+Input: nums = [4,2,5,9,7,4,8]
+Output: 64
+Explanation: We can choose indices 3 and 6 for the first pair (9, 8) and indices 1 and 5 for the second pair (2, 4).
+The product difference is (9 * 8) - (2 * 4) = 64.
+`
+let nums = [4,2,5,9,7,4,8]
 
-Constraints:
-
-1 <= words.length <= 1000
-1 <= words[i].length, chars.length <= 100
-words[i] and chars consist of lowercase English letters.`
-
-let words = ["cat", "bt", "hat", "tree"], chars = "atach";
-
-var countCharacters = function (words, chars) {
-    for (i = 0; i < words.length; i++) {
-        let arr = chars.split('');
-        for (j=0; j < words[i].length; j++) {
-            let test = chars.includes(words[i][j]);
-            // console.log(chars[j]);
-                if(!test){
-                    delete words[i];
-                    break
-                }
-            }
-            
-        }
-        
-        let out = words.reduce((t,c)=>t+c.length,0)
-        return out
+var maxProductDifference = function(nums) {
+    let sort_data = nums.sort(function(a,b){return a-b})
+    let a = sort_data.slice(-2,).reduce((a,b)=>a*b) ;
+    let b = sort_data.slice(0,2).reduce((a,b)=>a*b);
+    return(a-b);
 };
 
 
-countCharacters(words, chars) 
+maxProductDifference(nums)
