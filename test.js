@@ -1,33 +1,52 @@
-`Callback hell in JavaScript refers to the situation where you have multiple nested callback functions, making your code incredibly hard to read, debug, and maintain. It's like a pyramid of doom, built layer upon layer of callbacks, leading to messy and tangled logic.
+`
+Promises are like little IOUs in JavaScript. They represent the eventual completion (or failure) of an asynchronous operation and its resulting value. Instead of waiting for the operation to finish before moving on, promises let you register functions to be called later, when the result is available. This makes your code cleaner and more readable.
 
-Here's how it typically happens:
+Here's a breakdown of how promises work:
 
-You initiate an asynchronous operation using a function that takes a callback function as an argument. This callback will be called with the result of the operation when it finishes.
-Inside the callback, you may need to perform another asynchronous operation, again involving a callback.
-This nesting can continue, adding more and more layers of callbacks, each dependent on the previous one finishing.
-Why is this problematic?
+1. Creating a Promise:
 
-Indentation explosion: The code becomes deeply indented, making it visually confusing and difficult to follow the flow of execution.
-Error handling becomes a nightmare: Debugging errors within nested callbacks is challenging, as the error source might be buried several layers deep.
-Readability suffers: The logic becomes convoluted and hard to understand, especially for those unfamiliar with the code.
+You can create a promise using the new Promise constructor and providing an executor function. This function takes two arguments: resolve and reject. You call resolve with the successful result of the operation and reject with the error, if any.
+
+2. Consuming a Promise:
+
+You can't directly access the result of a promise. Instead, you use its then and catch methods to register functions to be called when the promise is resolved or rejected, respectively.
 `
 
-function getUserID(userName, callback) {
-    setTimeout(() => callback(1234), 1000)
-}
 
-function getEmailAdd(userID, callback) {
-    setTimeout(() => callback('user@testmail.com'), 500)
-}
-
-
-function logEmailId(email) {
-    console.log(`user email : ${email}`);
-}
-
-
-getUserID('Sree', (userID) => {
-    getEmailAdd(userID, (email) => {
-        logEmailId(email)
+function getUserId(userName){
+    return new Promise((resolve, reject)=>{
+        setTimeout(()=>resolve(1234),1000)
     })
+}
+
+function getEmailAdd(userID){
+return new Promise((resolve, reject)=>{
+    setTimeout(()=>resolve('user@testmail.com'), 500)
 })
+}
+
+function logEmailId(email){
+    console.log(`user mail id : ${email}`);
+    
+}
+
+
+
+
+// getUserId('Sree')
+// .then((userID)=>getEmailAdd(userID))
+// .then((email)=>logEmailId(email))
+// .catch(error =>console.error(error))
+
+
+async function main(){
+    try{
+        const userID = await getUserId('SRee')
+        const email = await getEmailAdd(userID)
+        logEmailId(email)
+    }catch(error){
+        console.error(error);
+    }
+}
+
+main()
